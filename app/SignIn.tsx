@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import { Link } from 'expo-router';
 import React, { useState } from 'react';
 import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -11,7 +12,7 @@ const SignInScreen: React.FC = () => {
   const handleSignIn = () => {
     console.log('Sign In with:', { email, password });
     // Add sign-in logic here (e.g., API call)
-    navigation.navigate('Home'); // Navigate to Home screen or next screen
+    navigation.navigate('Dashboard'); // Navigate to Home screen or next screen
   };
 
   const handleGoogleSignIn = () => {

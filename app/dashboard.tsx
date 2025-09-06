@@ -1,183 +1,193 @@
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import React from "react";
+import {
+  Image,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
-const DasboardScreen: React.FC = () => {
-  const navigation = useNavigation();
-
+export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
-      {/* Location and Search Bar */}
-      <View style={styles.locationContainer}>
-        <Text style={styles.locationText}>Seattle, USA</Text>
-        <TouchableOpacity style={styles.searchBar}>
-          <Icon name="magnify" size={20} color="#A0A0A0" />
-          <TextInput placeholder="Search doctors..." style={styles.searchInput} />
-        </TouchableOpacity>
-      </View>
-
-      {/* Hero Section */}
-      <View style={styles.heroSection}>
-        <Image source={{ uri: 'https://example.com/doctor-image.jpg' }} style={styles.heroImage} />
-        <View style={styles.heroTextContainer}>
-          <Text style={styles.heroTitle}>Looking for Specialist Doctors?</Text>
-          <Text style={styles.heroSubtitle}>Schedule an appointment with our top doctors.</Text>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        
+        {/* Location Header */}
+        <View style={styles.header}>
+          <Icon name="location-sharp" size={20} color="#000" />
+          <Text style={styles.locationText}>Seattle, USA</Text>
+          <Icon name="chevron-down" size={20} color="#000" />
+          <View style={styles.profileIcon}>
+            <Icon name="person-circle-outline" size={32} color="#000" />
+          </View>
         </View>
-      </View>
 
-      {/* Categories Section */}
-      <View style={styles.categoriesSection}>
-        <Text style={styles.sectionTitle}>Categories</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {['Dentistry', 'Cardiology', 'Pulmonology', 'General', 'Neurology', 'Gastroenterology', 'Laboratory', 'Vaccination'].map((category, index) => (
-            <TouchableOpacity key={index} style={styles.categoryCard}>
-              <Icon name="stethoscope" size={40} color="#fff" style={styles.categoryIcon} />
-              <Text style={styles.categoryText}>{category}</Text>
+        {/* Search Bar */}
+        <View style={styles.searchBox}>
+          <Icon name="search-outline" size={20} color="#999" />
+          <TextInput
+            placeholder="Search doctor..."
+            style={styles.searchInput}
+          />
+        </View>
+
+        {/* Banner */}
+        <View style={styles.banner}>
+          <View style={{ flex: 1 }}>
+            <Text style={styles.bannerTitle}>Looking for</Text>
+            <Text style={styles.bannerTitle}>Specialist Doctors?</Text>
+            <Text style={styles.bannerSubtitle}>
+              Schedule an appointment with our top doctors.
+            </Text>
+          </View>
+          <Image
+            source={require("../assets/images/doctor1.jpg")}
+            style={styles.bannerImage}
+          />
+        </View>
+
+        {/* Categories */}
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Categories</Text>
+          <Text style={styles.seeAll}>See All</Text>
+        </View>
+        <View style={styles.categories}>
+          {[
+            { name: "Dentistry", icon: "medkit-outline", color: "#fde2e2" },
+            { name: "Cardiology", icon: "heart-outline", color: "#d6f5e5" },
+            { name: "Pulmonology", icon: "lungs-outline", color: "#ffe5d9" },
+            { name: "General", icon: "people-outline", color: "#e0d4f7" },
+            { name: "Neurology", icon: "fitness-outline", color: "#c9f7f5" },
+            { name: "Gastro", icon: "restaurant-outline", color: "#f5d0f9" },
+            { name: "Laboratory", icon: "flask-outline", color: "#ffe1f0" },
+            { name: "Vaccination", icon: "bandage-outline", color: "#d0f7fa" },
+          ].map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[styles.categoryCard, { backgroundColor: item.color }]}
+            >
+              <Icon name={item.icon} size={26} color="#333" />
+              <Text style={styles.categoryText}>{item.name}</Text>
             </TouchableOpacity>
           ))}
-        </ScrollView>
-      </View>
+        </View>
 
-      {/* Nearby Medical Centers */}
-      <View style={styles.medicalCentersSection}>
-        <Text style={styles.sectionTitle}>Nearby Medical Centers</Text>
+        {/* Nearby Medical Centers */}
+        <View style={styles.sectionHeader}>
+          <Text style={styles.sectionTitle}>Nearby Medical Centers</Text>
+          <Text style={styles.seeAll}>See All</Text>
+        </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {['Sunrise Health Clinic', 'Golden Cardiological', 'City Medical Center'].map((center, index) => (
+          {[
+            {
+              name: "Sunrise Health Clinic",
+              image: require("../assets/images/clinic1.jpg"),
+            },
+            {
+              name: "Golden Cardiology",
+              image: require("../assets/images/clinic2.jpg"),
+            },
+          ].map((center, index) => (
             <View key={index} style={styles.centerCard}>
-              <Image source={{ uri: 'https://example.com/clinic-image.jpg' }} style={styles.centerImage} />
-              <Text style={styles.centerText}>{center}</Text>
+              <Image source={center.image} style={styles.centerImage} />
+              <Text style={styles.centerText}>{center.name}</Text>
             </View>
           ))}
         </ScrollView>
-      </View>
 
-      {/* Bottom Navigation Bar */}
+      </ScrollView>
+
+      {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-          <Icon name="home" size={30} color="#0F1C2E" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-          <Icon name="magnify" size={30} color="#0F1C2E" />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-          <Icon name="account" size={30} color="#0F1C2E" />
-        </TouchableOpacity>
+        <Icon name="home" size={26} color="#007AFF" />
+        <Icon name="calendar-outline" size={26} color="#aaa" />
+        <Icon name="chatbubble-outline" size={26} color="#aaa" />
+        <Icon name="settings-outline" size={26} color="#aaa" />
       </View>
     </SafeAreaView>
   );
-};
-
-export default DashboardScreen;
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    padding: 20,
+  container: { flex: 1, backgroundColor: "#fff" },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 15,
   },
-  locationContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  locationText: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#0F1C2E',
-  },
-  searchBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#F4F4F4',
-    borderRadius: 20,
-    paddingHorizontal: 16,
+  locationText: { fontSize: 16, marginLeft: 5, fontWeight: "600" },
+  profileIcon: { marginLeft: "auto" },
+  searchBox: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#f2f2f2",
+    marginHorizontal: 15,
+    borderRadius: 12,
+    paddingHorizontal: 10,
     paddingVertical: 8,
-    flex: 1,
   },
-  searchInput: {
-    marginLeft: 8,
-    fontSize: 16,
-    color: '#000',
+  searchInput: { marginLeft: 8, flex: 1, fontSize: 14 },
+  banner: {
+    flexDirection: "row",
+    backgroundColor: "#d0f0f7",
+    margin: 15,
+    padding: 15,
+    borderRadius: 15,
+    alignItems: "center",
   },
-  heroSection: {
-    marginBottom: 40,
-    borderRadius: 8,
-    overflow: 'hidden',
+  bannerTitle: { fontSize: 16, fontWeight: "700" },
+  bannerSubtitle: { fontSize: 12, marginTop: 5, color: "#555" },
+  bannerImage: { width: 80, height: 80, borderRadius: 40, marginLeft: 10 },
+  sectionHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginHorizontal: 15,
+    marginTop: 15,
+    marginBottom: 8,
   },
-  heroImage: {
-    width: '100%',
-    height: 200,
-    borderRadius: 8,
-  },
-  heroTextContainer: {
-    position: 'absolute',
-    top: 40,
-    left: 20,
-    right: 20,
-  },
-  heroTitle: {
-    fontSize: 22,
-    fontWeight: '600',
-    color: '#fff',
-  },
-  heroSubtitle: {
-    fontSize: 16,
-    color: '#fff',
-  },
-  categoriesSection: {
-    marginBottom: 40,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#0F1C2E',
-    marginBottom: 10,
+  sectionTitle: { fontSize: 16, fontWeight: "700" },
+  seeAll: { fontSize: 14, color: "#007AFF" },
+  categories: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    marginHorizontal: 15,
   },
   categoryCard: {
-    backgroundColor: '#F4A300',
-    paddingVertical: 20,
-    paddingHorizontal: 15,
-    borderRadius: 10,
-    marginRight: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 100,
+    width: "22%",
+    alignItems: "center",
+    paddingVertical: 15,
+    borderRadius: 12,
+    marginBottom: 15,
   },
-  categoryIcon: {
-    marginBottom: 10,
-  },
-  categoryText: {
-    fontSize: 14,
-    color: '#fff',
-    textAlign: 'center',
-  },
-  medicalCentersSection: {
-    marginBottom: 40,
-  },
+  categoryText: { fontSize: 12, marginTop: 6, textAlign: "center" },
   centerCard: {
-    marginRight: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: 160,
+    marginLeft: 15,
+    borderRadius: 12,
+    overflow: "hidden",
+    backgroundColor: "#fff",
+    elevation: 3,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
   },
-  centerImage: {
-    width: 120,
-    height: 100,
-    borderRadius: 8,
-  },
+  centerImage: { width: "100%", height: 100 },
   centerText: {
-    marginTop: 10,
     fontSize: 14,
-    color: '#0F1C2E',
-    textAlign: 'center',
+    fontWeight: "600",
+    padding: 8,
   },
   bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    paddingVertical: 10,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 12,
     borderTopWidth: 1,
-    borderColor: '#E0E0E0',
+    borderColor: "#eee",
+    backgroundColor: "#fff",
   },
 });
-
