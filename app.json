@@ -29,10 +29,16 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
+        }
+      ],
+      [
+        "expo-dev-client",
+        {
+          "launchMode": "most-recent"
         }
       ]
     ],
@@ -42,8 +48,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "0f58d4b4-af48-4bb4-bff5-d0928fd1d06d"
+        "projectId": "9c5c5157-efab-492d-8dbe-c5270732093e"
       }
-    }
+    },
+    "owner": "rabeed_shahid"
   }
 }

@@ -9,10 +9,12 @@ const SignInScreen: React.FC = () => {
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
 
+  React.useLayoutEffect(() => { navigation.setOptions({ headerShown: false }); }, [navigation]);
+
   const handleSignIn = () => {
     console.log('Sign In with:', { email, password });
     // Add sign-in logic here (e.g., API call)
-    navigation.navigate('Dashboard'); // Navigate to Home screen or next screen
+    navigation.navigate('dashboard'); // Navigate to Home screen or next screen
   };
 
   const handleGoogleSignIn = () => {
@@ -100,6 +102,7 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
+    marginTop: 30,
     marginBottom: 40,
   },
   appName: {

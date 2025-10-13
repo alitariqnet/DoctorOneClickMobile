@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from "react";
 import {
   Image,
@@ -12,6 +13,11 @@ import {
 import Icon from "react-native-vector-icons/Ionicons";
 
 export default function HomeScreen() {
+const navigation = useNavigation();
+
+  React.useLayoutEffect(() => { navigation.setOptions({ headerShown: false }); }, [navigation]);
+
+  
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -21,9 +27,12 @@ export default function HomeScreen() {
           <Icon name="location-sharp" size={20} color="#000" />
           <Text style={styles.locationText}>Seattle, USA</Text>
           <Icon name="chevron-down" size={20} color="#000" />
-          <View style={styles.profileIcon}>
+          <TouchableOpacity
+            style={styles.profileIcon}
+            onPress={() => navigation.navigate("Profile")}
+          >
             <Icon name="person-circle-outline" size={32} color="#000" />
-          </View>
+          </TouchableOpacity>
         </View>
 
         {/* Search Bar */}
@@ -118,6 +127,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     padding: 15,
+    marginTop: 15
   },
   locationText: { fontSize: 16, marginLeft: 5, fontWeight: "600" },
   profileIcon: { marginLeft: "auto" },
