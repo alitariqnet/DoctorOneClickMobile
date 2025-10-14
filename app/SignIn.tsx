@@ -12,7 +12,7 @@ const SignInScreen: React.FC = () => {
   const handleSignIn = () => {
     console.log('Sign In with:', { email, password });
     // Add sign-in logic here (e.g., API call)
-    navigation.navigate('Dashboard'); // Navigate to Home screen or next screen
+    navigation.navigate('Dashboard' as never); // Navigate to Home screen or next screen
   };
 
   const handleGoogleSignIn = () => {
@@ -58,7 +58,7 @@ const SignInScreen: React.FC = () => {
       {/* Sign In Button */}
       <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
         <Text style={styles.buttonText}>Sign In</Text>
-        <Link href='/dashboard'></Link>
+        <Link href='/Dashboard'></Link>
       </TouchableOpacity>
 
       {/* Or Divider */}
@@ -78,11 +78,11 @@ const SignInScreen: React.FC = () => {
 
       {/* Forgot Password & Sign Up Links */}
       <View style={styles.footerContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
+        <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword' as never)}>
           <Text style={styles.footerText}>Forgot password?</Text>
         </TouchableOpacity>
         <Text style={styles.footerText}> | </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+        <TouchableOpacity onPress={() => navigation.navigate('SignUp' as never)}>
           <Text style={styles.footerText}>Don't have an account? Sign up</Text>
         </TouchableOpacity>
       </View>
