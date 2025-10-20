@@ -117,9 +117,9 @@ const navigation = useNavigation();
               image: require("../assets/images/drali.jpg"),
             },
           ].map((center, index) => (
-            <View key={index} style={styles.centerCard}>
+            <View key={index} style={styles.centerCard} >
               <Image source={center.image} style={styles.centerImage} />
-              <Text style={styles.centerText}>{center.name}</Text>
+              <Text style={styles.centerText} onPress={() => navigation.navigate("doctor-detail" as never)}>{center.name}</Text>
             </View>
           ))}
         </ScrollView>
