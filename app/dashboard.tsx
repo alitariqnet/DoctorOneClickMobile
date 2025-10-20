@@ -97,8 +97,24 @@ const navigation = useNavigation();
               image: require("../assets/images/clinic1.jpg"),
             },
             {
-              name: "Dr. Sarah(Pediatrician)",
+              name: "Dr. Sarah (Pediatrician)",
               image: require("../assets/images/clinic2.jpg"),
+            },
+            {
+              name: "Dr. Uzma (Pulmonologist)",
+              image: require("../assets/images/druzma.jpeg"),
+            },
+            {
+              name: "Dr. Hassan (Otolaryngologist)",
+              image: require("../assets/images/drhassan.jpeg"),
+            },
+            {
+              name: "Dr. Hina (Obstetrician)",
+              image: require("../assets/images/drhina.jpeg"),
+            },
+            {
+              name: "Dr. Ali (Psychiatrist)",
+              image: require("../assets/images/drali.jpg"),
             },
           ].map((center, index) => (
             <View key={index} style={styles.centerCard}>
