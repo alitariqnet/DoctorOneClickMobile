@@ -46,16 +46,20 @@ const navigation = useNavigation();
 
         {/* Banner */}
         <View style={styles.banner}>
-          <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }} >
             <Text style={styles.bannerTitle}>Looking for</Text>
             <Text style={styles.bannerTitle}>Specialist Doctors?</Text>
-            <Text style={styles.bannerSubtitle}>
+            <Text style={styles.bannerSubtitle}  
+            onPress={() => navigation.navigate("search-doctors" as never)}
+            
+            >
               Schedule an appointment with our top doctors.
             </Text>
           </View>
           <Image
             source={require("../assets/images/doctor1.jpg")}
             style={styles.bannerImage}
+
           />
         </View>
 
@@ -88,7 +92,7 @@ const navigation = useNavigation();
         {/* Nearby Doctors */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Nearby Doctors</Text>
-          <Text style={styles.seeAll}>See All</Text>
+          <Text style={styles.seeAll}  onPress={() => navigation.navigate("doctors-list" as never)}>See All</Text>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {[

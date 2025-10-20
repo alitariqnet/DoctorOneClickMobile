@@ -36,6 +36,11 @@
         }
       ]
     ],
+    "react-native-maps":
+        {
+          "iosApiKey": "YOUR_IOS_API_KEY",
+          "androidApiKey": "YOUR_ANDROID_API_KEY"
+        },
     "experiments": {
       "typedRoutes": true
     },

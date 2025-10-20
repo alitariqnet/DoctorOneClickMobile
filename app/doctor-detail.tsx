@@ -1,5 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
-import { StackNavigationProp } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
+
 import React, { JSX, useState } from 'react';
 import {
     Image,
@@ -19,14 +20,14 @@ type RootStackParamList = {
   BookAppointment: { doctorId: string };
 };
 
-type DoctorDetailsScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'DoctorDetails'
->;
+// type DoctorDetailsScreenNavigationProp = StackNavigationProp<
+//   RootStackParamList,
+//   'DoctorDetails'
+// >;
 
-interface DoctorDetailsScreenProps {
-  navigation: DoctorDetailsScreenNavigationProp;
-}
+// interface DoctorDetailsScreenProps {
+//   navigation: DoctorDetailsScreenNavigationProp;
+// }
 
 interface Review {
   id: number;
@@ -47,8 +48,9 @@ interface Doctor {
   image: ImageSourcePropType;
 }
 
-const DoctorDetailsScreen: React.FC<DoctorDetailsScreenProps> = ({ navigation }) => {
+const DoctorDetailsScreen = ({ }) => {
   const [showFullAbout, setShowFullAbout] = useState<boolean>(false);
+    const navigation = useNavigation();
 
   const doctor: Doctor = {
     name: "Dr. David Patel",
@@ -95,7 +97,7 @@ const DoctorDetailsScreen: React.FC<DoctorDetailsScreenProps> = ({ navigation })
 
   const handleBookAppointment = (): void => {
     // Navigate to booking screen
-    navigation.navigate('BookAppointment', { doctorId: '1' });
+    navigation.navigate('book-appointment' as never);
   };
 
   return (
@@ -348,6 +350,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderTopWidth: 1,
     borderTopColor: '#f0f0f0',
+    marginBottom: 20,
   },
   bookAppointmentButton: {
     backgroundColor: '#2A7DE1',
