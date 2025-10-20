@@ -85,19 +85,19 @@ const navigation = useNavigation();
           ))}
         </View>
 
-        {/* Nearby Medical Centers */}
+        {/* Nearby Doctors */}
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Nearby Medical Centers</Text>
+          <Text style={styles.sectionTitle}>Nearby Doctors</Text>
           <Text style={styles.seeAll}>See All</Text>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {[
             {
-              name: "Sunrise Health Clinic",
+              name: "Dr. Lubna (Neutrionist)",
               image: require("../assets/images/clinic1.jpg"),
             },
             {
-              name: "Golden Cardiology",
+              name: "Dr. Sarah(Pediatrician)",
               image: require("../assets/images/clinic2.jpg"),
             },
           ].map((center, index) => (
@@ -199,5 +199,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: "#eee",
     backgroundColor: "#fff",
+    marginBottom: 50,
   },
 });
