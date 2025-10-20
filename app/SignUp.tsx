@@ -9,10 +9,14 @@ const CreateAccountScreen: React.FC = () => {
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
 
+   React.useLayoutEffect(() => {
+    navigation.setOptions({ title: "" });
+  }, [navigation]);
+  
   const handleCreateAccount = () => {
     // Handle account creation logic (e.g., API call)
     console.log('Account created with:', { name, email, password });
-    navigation.navigate('Home'); // Navigate to Home screen or next step
+    navigation.navigate('CreateProfile'); // Navigate to create profile
   };
 
   const handleGoogleLogin = () => {
