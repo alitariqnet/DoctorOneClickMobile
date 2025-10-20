@@ -62,7 +62,7 @@ const navigation = useNavigation();
         {/* Categories */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Categories</Text>
-          <Text style={styles.seeAll} onPress={() => navigation.navigate("categories" as never)}>See All</Text>
+          <Text style={styles.seeAll}>See All</Text>
         </View>
         <View style={styles.categories}>
           {[
@@ -74,6 +74,22 @@ const navigation = useNavigation();
             { name: "Gastro", icon: "restaurant-outline", color: "#f5d0f9" },
             { name: "Laboratory", icon: "flask-outline", color: "#ffe1f0" },
             { name: "Vaccination", icon: "bandage-outline", color: "#d0f7fa" },
+            { name: "Dermatologists", icon: "medkit-outline", color: "#fde2e2" },
+            { name: "Geriatricians", icon: "heart-outline", color: "#d6f5e5" },
+            { name: "Hematologists", icon: "lungs-outline", color: "#ffe5d9" },
+            { name: "Hepatologists", icon: "people-outline", color: "#e0d4f7" },
+            { name: "Internists", icon: "fitness-outline", color: "#c9f7f5" },
+            { name: "Nephrologists", icon: "restaurant-outline", color: "#f5d0f9" },
+            { name: "Neurologists", icon: "flask-outline", color: "#ffe1f0" },
+            { name: "Oncologists", icon: "bandage-outline", color: "#d0f7fa" },
+            { name: "Ophthalmologists", icon: "lungs-outline", color: "#ffe5d9" },
+            { name: "Orthopedists", icon: "people-outline", color: "#e0d4f7" },
+            { name: "Otolaryngologists ", icon: "fitness-outline", color: "#c9f7f5" },
+            { name: "Pathologists", icon: "restaurant-outline", color: "#f5d0f9" },
+            { name: "Pediatricians", icon: "flask-outline", color: "#ffe1f0" },
+            { name: "Physiatrists", icon: "bandage-outline", color: "#d0f7fa" },
+            { name: "Urologists", icon: "bandage-outline", color: "#d0f7fa" },
+            { name: "Obstetricians", icon: "bandage-outline", color: "#d0f7fa" },
           ].map((item, index) => (
             <TouchableOpacity
               key={index}
@@ -85,28 +101,7 @@ const navigation = useNavigation();
           ))}
         </View>
 
-        {/* Nearby Doctors */}
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Nearby Doctors</Text>
-          <Text style={styles.seeAll}>See All</Text>
-        </View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {[
-            {
-              name: "Dr. Lubna (Neutrionist)",
-              image: require("../assets/images/clinic1.jpg"),
-            },
-            {
-              name: "Dr. Sarah(Pediatrician)",
-              image: require("../assets/images/clinic2.jpg"),
-            },
-          ].map((center, index) => (
-            <View key={index} style={styles.centerCard}>
-              <Image source={center.image} style={styles.centerImage} />
-              <Text style={styles.centerText}>{center.name}</Text>
-            </View>
-          ))}
-        </ScrollView>
+       
 
       </ScrollView>
 
